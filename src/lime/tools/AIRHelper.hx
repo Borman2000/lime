@@ -152,11 +152,6 @@ class AIRHelper
 
 			if (project.debug)
 			{
-				if(project.targetFlags.exists("listen"))
-					args.push("-listen");
-				else
-					args.push("-connect");
-
 				if (project.config.exists("air.connect"))
 				{
 					args.push("-connect");
@@ -227,23 +222,6 @@ class AIRHelper
             if(project.config.getString("air.android_package", "apk") == "aab"){		// build aab
                 args.push("-platformsdk");
                 args.push(project.defines.get("ANDROID_SDK"));
-
-                System.runCommand(workingDirectory, project.defines.get("AIR_SDK") + "/bin/adt", args);
-            } else {	// build apk x32 and/or x64
-                if(hasARM64)
-                    System.runCommand(workingDirectory, project.defines.get("AIR_SDK") + "/bin/adt", args);
-
-                if(hasARMV7 || project.architectures.length == 0){
-                    if(hasARM64){
-                        var x64Path = StringTools.replace(targetPath, project.app.file, project.app.file + "_x64");
-                        FileSystem.rename(workingDirectory + "/" + targetPath, workingDirectory + "/" + x64Path);
-                    }
-
-                    args.remove("-arch");
-                    args.remove("armv8");
-
-                    System.runCommand(workingDirectory, project.defines.get("AIR_SDK") + "/bin/adt", args);
-                }
             }
 		}
 
@@ -259,6 +237,8 @@ class AIRHelper
 				Sys.putEnv("AIR_IOS_SIMULATOR_DEVICE", simulatorName);
 			}
 		}
+
+		System.runCommand(workingDirectory, project.defines.get("AIR_SDK") + "/bin/adt", args);
 
 		return targetPath + extension;
 	}
