@@ -126,6 +126,14 @@ class HTML5Helper
 
 			var args = [server, path, "-c-1", "--cors"];
 
+			var host:String = "localhost";
+			if (project.targetFlags.exists("host"))
+			{
+				host = project.targetFlags.get("host");
+				args.push("-a");
+				args.push(host);
+			}
+
 			if (project.targetFlags.exists("port"))
 			{
 				port = Std.parseInt(project.targetFlags.get("port"));
@@ -135,7 +143,7 @@ class HTML5Helper
 			{
 				args.push("-p");
 				args.push(Std.string(port));
-				Log.info("", "\x1b[1mStarting local web server:\x1b[0m http://localhost:" + port);
+				Log.info("", '\x1b[1mStarting local web server:\x1b[0m http://$host:$port');
 			}
 			else
 			{
