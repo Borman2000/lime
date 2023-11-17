@@ -1,7 +1,13 @@
 Changelog
 =========
 
-8.1.0 (??/??/2023)
+8.1.1 (11/08/2023)
+------------------
+
+* Fixed subset of characters escaped in file paths to fix Android builds on Windows.
+* Fixed playback of very long sounds by changing arithmetic to avoid integer overflow.
+
+8.1.0 (10/16/2023)
 ------------------
 
 * Added `visible` property to `Window` to allow it to be shown and hidden
