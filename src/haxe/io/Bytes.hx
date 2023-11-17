@@ -680,9 +680,10 @@ class Bytes
 	{
 		this.length = data.byteLength;
 		this.b = new Uint8Array(data);
+
 		untyped
 		{
-			b.bufferValue = data; // some impl does not return the same instance in .buffer
+			//b.bufferValue = data; // some impl does not return the same instance in .buffer
 			data.hxBytes = this;
 			data.bytes = this.b;
 		}
@@ -858,7 +859,7 @@ class Bytes
 
 	public inline function getData():BytesData
 	{
-		return untyped b.bufferValue;
+		return untyped b.buffer;
 	}
 
 	public static inline function alloc(length:Int):Bytes
