@@ -26,6 +26,7 @@ class HXProject extends Script
 	public var app:ApplicationData;
 	public var architectures:Array<Architecture>;
 	public var assets:Array<Asset>;
+	public var assetsFolders:Array<String>;
 	// public var command:String;
 	public var config:ConfigData;
 	public var debug:Bool;
@@ -166,6 +167,7 @@ class HXProject extends Script
 		window = {};
 		windows = [window];
 		assets = new Array<Asset>();
+		assetsFolders = [];
 
 		if (defines != null)
 		{
@@ -221,6 +223,7 @@ class HXProject extends Script
 
 		ObjectTools.copyFields(app, project.app);
 		project.architectures = architectures.copy();
+		project.assetsFolders = assetsFolders.copy();
 		project.assets = assets.copy();
 
 		for (i in 0...assets.length)
@@ -900,6 +903,7 @@ class HXProject extends Script
 
 			architectures = ArrayTools.concatUnique(architectures, project.architectures);
 			assets = ArrayTools.concatUnique(assets, project.assets);
+			assetsFolders = ArrayTools.concatUnique(assetsFolders, project.assetsFolders);
 			dependencies = ArrayTools.concatUnique(dependencies, project.dependencies, true);
 			excludeArchitectures = ArrayTools.concatUnique(excludeArchitectures, project.excludeArchitectures);
 			haxeflags = ArrayTools.concatUnique(haxeflags, project.haxeflags);

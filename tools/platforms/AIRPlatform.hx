@@ -143,8 +143,14 @@ class AIRPlatform extends FlashPlatform
 			{
 				if (asset.embed == false && asset.type != TEMPLATE)
 				{
-					files.push(asset.targetPath);
+//					files.push(asset.targetPath);
 				}
+				if (asset.embed == false && asset.type == MANIFEST)
+					files.push(asset.targetPath);
+			}
+			for (folder in project.assetsFolders)
+			{
+				files.push(folder);
 			}
 
 			for (icon in iconData)

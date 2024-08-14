@@ -314,6 +314,8 @@ class ProjectXMLParser extends HXProject
 
 		if (element.has.rename)
 		{
+			if(embed == false)
+				assetsFolders.push(element.att.rename);
 			targetPath = substitute(element.att.rename);
 		}
 		else if (element.has.path)
