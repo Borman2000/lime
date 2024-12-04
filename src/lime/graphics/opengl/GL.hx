@@ -15,6 +15,7 @@ import lime.system.CFFIPointer;
 #end
 
 @:allow(lime.ui.Window)
+@:dce
 class GL
 {
 	public static inline var DEPTH_BUFFER_BIT = 0x00000100;

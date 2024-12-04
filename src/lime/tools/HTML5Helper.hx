@@ -271,7 +271,9 @@ class HTML5Helper
 				if (project.targetFlags.exists("advanced"))
 				{
 					args.push("--compilation_level");
-					args.push("ADVANCED_OPTIMIZATIONS");
+					args.push("ADVANCED");
+					args.push("--jscomp_warning");
+					args.push("undefinedVars");
 				}
 
 				if (FileSystem.exists(sourceFile + ".map") || project.targetFlags.exists("source-map"))
