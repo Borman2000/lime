@@ -120,7 +120,7 @@ class AIRPlatform extends FlashPlatform
 		}
 		else
 		{
-			targetPlatform = cast System.hostPlatform;
+			targetPlatform = System.hostPlatform;
 			targetPlatformType = DESKTOP;
 		}
 	}
@@ -145,7 +145,7 @@ class AIRPlatform extends FlashPlatform
 				{
 //					files.push(asset.targetPath);
 				}
-				if (asset.type == MANIFEST)
+				if (asset.embed == false && asset.type == MANIFEST)
 					files.push(asset.targetPath);
 			}
 
@@ -166,7 +166,7 @@ class AIRPlatform extends FlashPlatform
 
 			var targetPath = switch (targetPlatform)
 			{
-				case ANDROID: "bin/" + project.app.file + "." + (project.debug ? "apk" : project.config.getString("air.android_package", "apk"));
+				case ANDROID: "bin/" + project.app.file + ".apk";
 				case IOS: "bin/" + project.app.file + ".ipa";
 				default: "bin/" + project.app.file + ".air";
 			}

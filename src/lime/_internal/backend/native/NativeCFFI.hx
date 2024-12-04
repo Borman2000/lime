@@ -213,8 +213,6 @@ class NativeCFFI
 
 	@:cffi private static function lime_joystick_get_num_hats(id:Int):Int;
 
-	@:cffi private static function lime_joystick_get_num_trackballs(id:Int):Int;
-
 	@:cffi private static function lime_joystick_event_manager_register(callback:Dynamic, eventObject:Dynamic):Void;
 
 	@:cffi private static function lime_jpeg_decode_bytes(data:Dynamic, decodeData:Bool, buffer:Dynamic):Dynamic;
@@ -495,8 +493,6 @@ class NativeCFFI
 	private static var lime_joystick_get_num_axes = new cpp.Callable<Int->Int>(cpp.Prime._loadPrime("lime", "lime_joystick_get_num_axes", "ii", false));
 	private static var lime_joystick_get_num_buttons = new cpp.Callable<Int->Int>(cpp.Prime._loadPrime("lime", "lime_joystick_get_num_buttons", "ii", false));
 	private static var lime_joystick_get_num_hats = new cpp.Callable<Int->Int>(cpp.Prime._loadPrime("lime", "lime_joystick_get_num_hats", "ii", false));
-	private static var lime_joystick_get_num_trackballs = new cpp.Callable<Int->Int>(cpp.Prime._loadPrime("lime", "lime_joystick_get_num_trackballs", "ii",
-		false));
 	private static var lime_joystick_event_manager_register = new cpp.Callable<cpp.Object->cpp.Object->cpp.Void>(cpp.Prime._loadPrime("lime",
 		"lime_joystick_event_manager_register", "oov", false));
 	private static var lime_jpeg_decode_bytes = new cpp.Callable<cpp.Object->Bool->cpp.Object->cpp.Object>(cpp.Prime._loadPrime("lime",
@@ -706,7 +702,6 @@ class NativeCFFI
 	private static var lime_joystick_get_num_axes = CFFI.load("lime", "lime_joystick_get_num_axes", 1);
 	private static var lime_joystick_get_num_buttons = CFFI.load("lime", "lime_joystick_get_num_buttons", 1);
 	private static var lime_joystick_get_num_hats = CFFI.load("lime", "lime_joystick_get_num_hats", 1);
-	private static var lime_joystick_get_num_trackballs = CFFI.load("lime", "lime_joystick_get_num_trackballs", 1);
 	private static var lime_joystick_event_manager_register = CFFI.load("lime", "lime_joystick_event_manager_register", 2);
 	private static var lime_jpeg_decode_bytes = CFFI.load("lime", "lime_jpeg_decode_bytes", 3);
 	private static var lime_jpeg_decode_file = CFFI.load("lime", "lime_jpeg_decode_file", 3);
@@ -1109,11 +1104,6 @@ class NativeCFFI
 	}
 
 	@:hlNative("lime", "hl_joystick_get_num_hats") private static function lime_joystick_get_num_hats(id:Int):Int
-	{
-		return 0;
-	}
-
-	@:hlNative("lime", "hl_joystick_get_num_trackballs") private static function lime_joystick_get_num_trackballs(id:Int):Int
 	{
 		return 0;
 	}
@@ -3010,7 +3000,7 @@ class NativeCFFI
 		return 0;
 	}
 
-	@:hlNative("lime", "hl_cairo_get_matrix") private static function lime_cairo_get_matrix(handle:CFFIPointer, out:Matrix3):Matrix3
+	@:hlNative("lime", "hl_cairo_get_matrix") private static function lime_cairo_get_matrix(handle:CFFIPointer, out:CairoMatrix3):CairoMatrix3
 	{
 		return null;
 	}
@@ -3127,7 +3117,7 @@ class NativeCFFI
 
 	@:hlNative("lime", "hl_cairo_set_line_width") private static function lime_cairo_set_line_width(handle:CFFIPointer, width:Float):Void {}
 
-	@:hlNative("lime", "hl_cairo_set_matrix") private static function lime_cairo_set_matrix(handle:CFFIPointer, matrix:Matrix3):Void {}
+	@:hlNative("lime", "hl_cairo_set_matrix") private static function lime_cairo_set_matrix(handle:CFFIPointer, matrix:CairoMatrix3):Void {}
 
 	@:hlNative("lime", "hl_cairo_set_miter_limit") private static function lime_cairo_set_miter_limit(handle:CFFIPointer, miterLimit:Float):Void {}
 
@@ -3165,7 +3155,7 @@ class NativeCFFI
 
 	@:hlNative("lime", "hl_cairo_text_path") private static function lime_cairo_text_path(handle:CFFIPointer, text:String):Void {}
 
-	@:hlNative("lime", "hl_cairo_transform") private static function lime_cairo_transform(handle:CFFIPointer, matrix:Matrix3):Void {}
+	@:hlNative("lime", "hl_cairo_transform") private static function lime_cairo_transform(handle:CFFIPointer, matrix:CairoMatrix3):Void {}
 
 	@:hlNative("lime", "hl_cairo_translate") private static function lime_cairo_translate(handle:CFFIPointer, x:Float, y:Float):Void {}
 
@@ -3311,7 +3301,7 @@ class NativeCFFI
 		return 0;
 	}
 
-	@:hlNative("lime", "hl_cairo_pattern_get_matrix") private static function lime_cairo_pattern_get_matrix(handle:CFFIPointer, out:Matrix3):Matrix3
+	@:hlNative("lime", "hl_cairo_pattern_get_matrix") private static function lime_cairo_pattern_get_matrix(handle:CFFIPointer, out:CairoMatrix3):CairoMatrix3
 	{
 		return null;
 	}
@@ -3320,7 +3310,7 @@ class NativeCFFI
 
 	@:hlNative("lime", "hl_cairo_pattern_set_filter") private static function lime_cairo_pattern_set_filter(handle:CFFIPointer, filter:Int):Void {}
 
-	@:hlNative("lime", "hl_cairo_pattern_set_matrix") private static function lime_cairo_pattern_set_matrix(handle:CFFIPointer, matrix:Matrix3):Void {}
+	@:hlNative("lime", "hl_cairo_pattern_set_matrix") private static function lime_cairo_pattern_set_matrix(handle:CFFIPointer, matrix:CairoMatrix3):Void {}
 
 	@:hlNative("lime", "hl_cairo_surface_flush") private static function lime_cairo_surface_flush(surface:CFFIPointer):Void {}
 	#end

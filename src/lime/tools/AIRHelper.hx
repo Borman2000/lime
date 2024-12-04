@@ -276,7 +276,7 @@ class AIRHelper
 				+ (rootDirectory != null ? rootDirectory + "/" : "")
 				+ project.app.file
 				+ ".apk");
-			AndroidHelper.run(project.meta.packageName + "/.AppEntry");
+			AndroidHelper.run(project.meta.packageName + "/.AIRAppEntry");
 		}
 		else if (targetPlatform == IOS && !project.targetFlags.exists("air-simulator"))
 		{
